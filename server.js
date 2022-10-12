@@ -8,7 +8,7 @@ import "dotenv/config";
 
 // * App config
 const app = express();
-const port = process.env.port || 9000;
+const port = process.env.PORT || 9000;
 
 const pusher = new Pusher({
   appId: "1469857",

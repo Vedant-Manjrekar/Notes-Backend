@@ -22,6 +22,11 @@ const pusher = new Pusher({
 app.use(express.json());
 app.use(cors());
 
+var corsOptions = {
+  origin: "https://notes-web-application1.herokuapp.com/",
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
 // * Db config
 const connec_URL = process.env.DB_URL;
 
@@ -54,7 +59,7 @@ mongoose.connect(connec_URL, {
 });
 
 // * Api routes
-app.get("/", (req, res) => {
+app.get("/", cors(corsOptions), (req, res) => {
   if (res.status == 102) {
     console.log("loading....");
   }
@@ -62,7 +67,7 @@ app.get("/", (req, res) => {
   res.status(200).send("Fetched");
 });
 
-app.get("/notes/sync", (req, res) => {
+app.get("/notes/sync", cors(corsOptions), (req, res) => {
   Notes.find((error, data) => {
     if (error) {
       res.status(500).send(error.message);
@@ -72,7 +77,7 @@ app.get("/notes/sync", (req, res) => {
   });
 });
 
-app.patch("/update/:id", async (request, res) => {
+app.patch("/update/:id", cors(corsOptions), async (request, res) => {
   try {
     const _id = request.params.id;
 
@@ -85,7 +90,7 @@ app.patch("/update/:id", async (request, res) => {
   }
 });
 
-app.post("/notes/new", (req, res) => {
+app.post("/notes/new", cors(corsOptions), (req, res) => {
   const dbNote = req.body;
 
   Notes.create(dbNote, (err, data) => {
@@ -97,7 +102,7 @@ app.post("/notes/new", (req, res) => {
   });
 });
 
-app.delete("/delete/:id", async (req, res) => {
+app.delete("/delete/:id", cors(corsOptions), async (req, res) => {
   try {
     const _id = req.params.id;
 
@@ -114,6 +119,6 @@ app.delete("/delete/:id", async (req, res) => {
 });
 
 // * Listen.
-app.listen(port, () => {
+app.listen(port, cors(corsOptions), () => {
   console.log(`Listening on Port ${port}`);
 });

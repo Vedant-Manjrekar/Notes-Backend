@@ -119,6 +119,6 @@ app.delete("/delete/:id", cors(corsOptions), async (req, res) => {
 });
 
 // * Listen.
-app.listen(port, cors(corsOptions), () => {
+app.listen(port, () => {
   console.log(`Listening on Port ${port}`);
 });

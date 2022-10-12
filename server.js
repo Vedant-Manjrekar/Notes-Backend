@@ -48,7 +48,10 @@ db.once("open", () => {
   });
 });
 
-mongoose.connect(connec_URL);
+mongoose.connect(connec_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // * Api routes
 app.get("/", (req, res) => {

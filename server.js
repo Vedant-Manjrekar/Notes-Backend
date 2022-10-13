@@ -20,6 +20,11 @@ const pusher = new Pusher({
 
 // * Middleware
 app.use(express.json());
+app.use(
+  cors({
+    origin: "https://notes-app-six-rho.vercel.app/",
+  })
+);
 
 // var corsOptions = {
 //   origin: "https://notes-web-application1.herokuapp.com/",

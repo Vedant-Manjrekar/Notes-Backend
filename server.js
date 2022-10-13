@@ -26,11 +26,6 @@ app.use(
   })
 );
 
-// var corsOptions = {
-//   origin: "https://notes-web-application1.herokuapp.com/",
-//   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-// };
-
 // * Db config
 const connec_URL = process.env.DB_URL;
 

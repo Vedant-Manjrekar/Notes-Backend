@@ -1,6 +1,7 @@
 {
   "name": "notes-app-backend",
   "version": "1.0.0",
+  "proxy": "https://notes-web-application1.herokuapp.com",
   "description": "Backend for notes-app",
   "main": "server.js",
   "type": "module",

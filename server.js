@@ -21,15 +21,6 @@ const pusher = new Pusher({
 // * Middleware
 app.use(express.json());
 
-const corsOpts = {
-  origin: "https://notes-web-application1.herokuapp.com/",
-  credentials: true,
-  methods: ["GET", "POST", "HEAD", "PUT", "PATCH", "DELETE"],
-  allowedHeaders: ["Content-Type"],
-  exposedHeaders: ["Content-Type"],
-};
-app.use(cors(corsOpts));
-
 // var corsOptions = {
 //   origin: "https://notes-web-application1.herokuapp.com/",
 //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204

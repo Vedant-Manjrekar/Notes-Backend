@@ -20,6 +20,8 @@ const pusher = new Pusher({
 
 // * Middleware
 app.use(express.json());
+app.options("*", cors());
+app.use(cors());
 
 // var corsOptions = {
 //   origin: "https://notes-web-application1.herokuapp.com/",

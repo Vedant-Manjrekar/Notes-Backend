@@ -22,7 +22,7 @@ const pusher = new Pusher({
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://notes-web-application1.herokuapp.com/",
+    origin: "https://notes-web-application1.herokuapp.com",
   })
 );
 

@@ -22,7 +22,7 @@ const pusher = new Pusher({
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://notes-app-six-rho.vercel.app/",
+    origin: "https://notes-app-six-rho.vercel.app",
   })
 );
 

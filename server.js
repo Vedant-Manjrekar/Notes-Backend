@@ -20,12 +20,16 @@ const pusher = new Pusher({
 
 // * Middleware
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://notes-web-application1.herokuapp.com/",
+  })
+);
 
-var corsOptions = {
-  origin: "https://notes-web-application1.herokuapp.com/",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+// var corsOptions = {
+//   origin: "https://notes-web-application1.herokuapp.com/",
+//   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 
 // * Db config
 const connec_URL = process.env.DB_URL;
@@ -67,7 +71,7 @@ app.get("/", cors(corsOptions), (req, res) => {
   res.status(200).send("Fetched");
 });
 
-app.get("/notes/sync", cors(corsOptions), (req, res) => {
+app.get("/notes/sync", (req, res) => {
   Notes.find((error, data) => {
     if (error) {
       res.status(500).send(error.message);
@@ -77,7 +81,7 @@ app.get("/notes/sync", cors(corsOptions), (req, res) => {
   });
 });
 
-app.patch("/update/:id", cors(corsOptions), async (request, res) => {
+app.patch("/update/:id", async (request, res) => {
   try {
     const _id = request.params.id;
 
@@ -90,7 +94,7 @@ app.patch("/update/:id", cors(corsOptions), async (request, res) => {
   }
 });
 
-app.post("/notes/new", cors(corsOptions), (req, res) => {
+app.post("/notes/new", (req, res) => {
   const dbNote = req.body;
 
   Notes.create(dbNote, (err, data) => {
@@ -102,7 +106,7 @@ app.post("/notes/new", cors(corsOptions), (req, res) => {
   });
 });
 
-app.delete("/delete/:id", cors(corsOptions), async (req, res) => {
+app.delete("/delete/:id", async (req, res) => {
   try {
     const _id = req.params.id;
 

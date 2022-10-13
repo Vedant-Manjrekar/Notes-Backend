@@ -20,11 +20,15 @@ const pusher = new Pusher({
 
 // * Middleware
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://notes-web-application1.herokuapp.com",
-  })
-);
+
+const corsOpts = {
+  origin: "*",
+  credentials: true,
+  methods: ["GET", "POST", "HEAD", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: ["Content-Type"],
+  exposedHeaders: ["Content-Type"],
+};
+app.use(cors(corsOpts));
 
 // var corsOptions = {
 //   origin: "https://notes-web-application1.herokuapp.com/",

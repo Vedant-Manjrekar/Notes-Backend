@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const notesSchema = mongoose.Schema({
   value: {
@@ -8,4 +8,4 @@ const notesSchema = mongoose.Schema({
   },
 });
 
-export default mongoose.model("notesContent", notesSchema);
+module.exports = mongoose.model("notesContent", notesSchema);

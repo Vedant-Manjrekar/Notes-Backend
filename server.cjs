@@ -1,10 +1,10 @@
 // * Imports
-import express from "express";
-import mongoose from "mongoose";
-import Notes from "./notesSchema.js";
-import Pusher from "pusher";
-import cors from "cors";
-import "dotenv/config";
+const express = require("express");
+const mongoose = require("mongoose");
+const Notes = require("./notesSchema.cjs");
+const Pusher = require("pusher");
+const cors = require("cors");
+require("dotenv/config");
 
 // * App config
 const app = express();

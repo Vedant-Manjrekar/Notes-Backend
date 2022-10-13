@@ -63,7 +63,7 @@ mongoose.connect(connec_URL, {
 });
 
 // * Api routes
-app.get("/", cors(corsOptions), (req, res) => {
+app.get("/", (req, res) => {
   if (res.status == 102) {
     console.log("loading....");
   }
